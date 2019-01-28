@@ -1,0 +1,85 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  PREAMBLE : COPY THIS AT THE BEGINNING OF YOUR PRESENTATION
+%   
+%   Author: Prithvi Thakur
+%   Date Created: 28-01-2019
+%
+%   Use with XeLaTeX. Change the font path on line 29. 
+%
+%   ToDo: 
+%       Create a separate .sty file with this theme
+%       Increase math mode font size
+%       Enhance progress bar
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{beamer}
+
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setsansfont{Roboto}[
+    Path = /usr/local/texlive/2017/texmf-dist/fonts/truetype/google/roboto/,
+    Extension =.ttf,
+    ItalicFont = *-RegularItalic,
+    BoldFont = *-Black,
+    UprightFont = *-Regular ]
+
+% set beamer fonts
+\setbeamerfont{title}{size=\Huge}
+% \setbeamerfont{itemize/enumerate body}{size=\large}
+% \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+% \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
+\setbeamerfont{frametitle}{size=\huge}
+\DeclareMathSizes{12}{12.5}{9}{9}
+
+% Change default title color
+\usepackage{xcolor}
+\definecolor{myblue}{RGB}{18, 65, 104}  % title color
+\definecolor{myhl}{RGB}{21, 126, 186}   % texthighlight color
+\definecolor{myblack}{RGB}{43, 40, 40}
+\setbeamercolor{titlelike}{parent=structure,fg=myblue}
+
+% Chaneg bullet points
+% \setbeamertemplate{itemize items}{\setlength\itemsep{1em}}
+\setbeamercolor*{item}{fg=myblue}
+
+% disable navigation
+\setbeamertemplate{navigation symbols}{}
+
+% Add progressbar (Got it from here: https://tex.stackexchange.com/a/245626)
+\setbeamercolor{progress bar progress}{use=progress bar,bg=progress bar.fg}
+\defbeamertemplate{footline}{progress bar}{%
+    \ifnum\thepage>1\relax
+        \dimen0=\paperwidth%
+        \multiply\dimen0 by \insertframenumber
+        \divide\dimen0 by \inserttotalframenumber
+        \edef\progressbarwidth{\the\dimen0}
+
+        \leavevmode%
+        \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{progress bar}
+        \begin{beamercolorbox}[wd=\progressbarwidth,ht=2.25ex,dp=1ex]{progress bar progress}
+        \end{beamercolorbox}%
+    \end{beamercolorbox}%
+\fi
+}
+\setbeamertemplate{footline}[progress bar]
+\setbeamercolor{progress bar}{fg=myblue,bg=white!70!black}
+
+
+% disable "Figure:" in the captions
+\setbeamertemplate{caption}{\tiny\insertcaption}
+\setbeamertemplate{caption label separator}{}
+
+% set new command for code/highlight
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\hl}[1]{\textcolor{myhl}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
